@@ -1,0 +1,16 @@
+<div class="col-lg-7 ">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><strong><%= @collection[:title] %></strong></h4>
+      <%= link_to 'Edit', edit_collection_path(@collection[:id]), :class => 'label label-default' %>
+      <a class="label label-danger" href="#">Delete</a>
+    </div>
+    <div class="panel-body">
+      <img class="img-responsive" src="<%= @collection[:url] %>" alt="Winterfell">
+      <div class="description">
+        <a href="#">Jerome Sta. Maria</a>
+        <p><%= @collection[:description] %></p>
+      </div>
+    </div>
+  </div>
+</div>

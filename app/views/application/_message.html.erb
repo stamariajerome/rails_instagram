@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <strong><%= value.length > 1 ? value.length.to_s + ' errors' : value.length.to_s + ' error' %> has occured, please fix the problems mentioned below</strong>
+    <ul>
+      <% value.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
