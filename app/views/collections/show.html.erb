@@ -2,8 +2,10 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4><strong><%= @collection[:title] %></strong></h4>
+      <% if current_user[:id] ==  @collection[:user_id] %>
       <%= link_to 'Edit', edit_collection_path(@collection[:id]), :class => 'label label-default' %>
       <%= link_to 'Delete', collection_path, :method => 'delete', :class => 'label label-danger' %>
+      <% end %>
     </div>
     <div class="panel-body">
       <img class="img-responsive" src="<%= @collection[:url] %>" alt="Winterfell">

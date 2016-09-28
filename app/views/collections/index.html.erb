@@ -6,7 +6,7 @@
         <div class="caption">
           <h4><%= collection[:title] %></h4>
           <p><%= collection[:description] %></p>
-          <a href="#">Jerome Sta. Maria</a>
+          <a href="#"><%= collection.user[:username] %></a>
           <div><%= time_ago_in_words(collection[:created_at]) %> ago</div>
           <%= link_to 'View', collection_path(collection[:id]), :class => 'label label-info' %>
         </div>
