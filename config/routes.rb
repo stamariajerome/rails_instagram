@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   # Collection Routes
   resources :collections
+
+  # User Routes
+  get '/register', :to => 'users#new'
+  resources :users, :except => [:new]
 end

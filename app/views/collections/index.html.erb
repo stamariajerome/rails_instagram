@@ -2,9 +2,7 @@
   <% @collections.each do |collection| %>
     <div class="col-lg-3 ">
       <div class="thumbnail">
-        <a href="#">
-          <img src="<%= collection[:url] %>" alt="Winterfell">
-        </a>
+        <%= link_to image_tag(collection[:url], :size => '', :alt => 'Winterfell'), collection_path(collection[:id]) %>
         <div class="caption">
           <h4><%= collection[:title] %></h4>
           <p><%= collection[:description] %></p>

@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  before_action :prepare_collection, :only => [:show, :edit, :destroy]
+  before_action :prepare_collection, :except => [:index, :new, :create]
   def index
     @collections = Collection.all
   end
@@ -24,7 +24,18 @@ class CollectionsController < ApplicationController
   def edit
   end
 
+  def update
+    if @collection.update(collection_params)
+      redirect_to collections_path
+    else
+      flash.now[:danger] = @collection.errors.full_messages
+      render :new
+    end
+  end
+
   def destroy
+    @collection.destroy
+    redirect_to collections_path
   end
 
   private

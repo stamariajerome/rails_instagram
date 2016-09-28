@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <h4><strong><%= @collection[:title] %></strong></h4>
       <%= link_to 'Edit', edit_collection_path(@collection[:id]), :class => 'label label-default' %>
-      <a class="label label-danger" href="#">Delete</a>
+      <%= link_to 'Delete', collection_path, :method => 'delete', :class => 'label label-danger' %>
     </div>
     <div class="panel-body">
       <img class="img-responsive" src="<%= @collection[:url] %>" alt="Winterfell">
@@ -11,6 +11,12 @@
         <a href="#">Jerome Sta. Maria</a>
         <p><%= @collection[:description] %></p>
       </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-5">
+  <div class="panel panel-default">
+    <div class="panel-body">
     </div>
   </div>
 </div>
