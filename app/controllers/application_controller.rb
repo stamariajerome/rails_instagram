@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    redirect_to root_path if !logged_in?
+    if !logged_in?
+      flash[:warning] = ['you must be logged in to access this page']
+      redirect_to root_path
+    end
+    # redirect_to root_path if !logged_in?
   end
-
-  # def collection_owner
-  #   redirect_to collections_path if !(@collection.user_id == current_user[:id])
-  # end
 end
