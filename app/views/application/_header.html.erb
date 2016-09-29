@@ -20,6 +20,11 @@
           <% if logged_in? %>
             <!-- TODO create show action for users -->
             <li><%= link_to current_user[:username], user_path(current_user[:id]) %></li>
+            <li>
+              <%= link_to do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+              <% end %>
+            </li>
             <li><%= link_to 'Logout', logout_path, :method => 'delete' %></li>
           <% else %>
             <li> <%= link_to 'Login', login_path %> </li>

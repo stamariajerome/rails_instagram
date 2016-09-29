@@ -2,7 +2,7 @@
 <div class="row">
   <% @collections.each do |collection| %>
     <div class="col-lg-3 ">
-      <div class="thumbnail"
+      <div class="thumbnail">
         <%= link_to image_tag(collection[:url], :size => '', :alt => 'Winterfell'), collection_path(collection[:id]) %>
         <div class="caption">
           <h4><%= collection[:title] %></h4>
@@ -10,6 +10,7 @@
           <!-- TODO create show action for users -->
           <a href="#"><%= collection.user[:username] %></a>
           <div><%= time_ago_in_words(collection[:created_at]) %> ago</div>
+          <%= link_to 'Buy', nil, :class => 'label label-warning' %>
           <%= link_to 'View', collection_path(collection[:id]), :class => 'label label-info' %>
         </div>
       </div>
