@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  # TODO dont' need yet?
   has_many :collections, :dependent => :destroy
+  belongs_to :role
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   has_secure_password

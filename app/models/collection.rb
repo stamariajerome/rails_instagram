@@ -1,4 +1,9 @@
 class Collection < ApplicationRecord
+
+  # before_save do
+  #
+  # end
+
   belongs_to :user
   validates :title, :presence => true
   validates :url, :presence => true

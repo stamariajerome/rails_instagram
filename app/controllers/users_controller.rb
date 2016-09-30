@@ -14,6 +14,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    # TODO Wrong maybe? can't get the usernames owner
+    @collections = Collection.where(:user_id => params[:id])
+
+    @user = User.find(params[:id])
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :gender, :country);

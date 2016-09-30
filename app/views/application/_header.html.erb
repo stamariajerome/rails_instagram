@@ -15,6 +15,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          <li><%= fa_icon "twitter" %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
@@ -22,7 +23,7 @@
             <li><%= link_to current_user[:username], user_path(current_user[:id]) %></li>
             <li>
               <%= link_to do %>
-                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <span class="glyphicon glyphicon-shopping-cart"><span class="badge">5</span></span>
               <% end %>
             </li>
             <li><%= link_to 'Logout', logout_path, :method => 'delete' %></li>

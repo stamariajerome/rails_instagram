@@ -1,5 +1,7 @@
 <%= link_to 'Add a collection', new_collection_path, :class => 'btn btn-primary', :style => 'margin-bottom: 10px;' %>
 <div class="row">
+    <!-- TODO change can't get the owner -->
+    <h3><%= "#{@user.username}\'s collection"  %></h3>
   <% @collections.each do |collection| %>
     <div class="col-lg-3 ">
       <div class="thumbnail">
