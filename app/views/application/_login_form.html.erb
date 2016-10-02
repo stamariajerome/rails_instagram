@@ -1,11 +1,11 @@
 <div class="col-lg-4 col-lg-offset-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <%= render 'message' %>
+      <%= render 'message' if request.original_url != self.root_url %>
       <h4><strong>Login</strong></h4>
     </div>
     <div class="panel-body">
-      <%= form_for :session, :url => login_path do |f| %>
+      <%= form_for :session, :url => login_path, :html => { :id => 'login-form' } do |f| %>
         <div class="form-group">
           <%= f.label :username %>
           <%= f.text_field :username, :class => 'form-control' %>
@@ -15,7 +15,7 @@
           <%= f.password_field :password, :class => 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.submit 'Login', :class => 'btn btn-primary' %>
+          <%= f.submit 'Login', :class => 'btn btn-primary btn-login' %>
         </div>
       <% end %>
     </div>

@@ -15,3 +15,11 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $('body').on('keypress', function(e) {
+    if(e.keyCode === 13) {
+      $('#login-form').submit();
+    }
+  });
+});
