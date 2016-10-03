@@ -6,12 +6,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      redirect_to collections_path
-    else
-      flash[:danger] = @user.errors.full_messages
-      redirect_to register_path
-    end
+    logger.ap user_params.inspect
+
+    # if @user.save
+    #   redirect_to collections_path
+    # else
+    #   flash[:danger] = @user.errors.full_messages
+    #   redirect_to register_path
+    # end
   end
 
   def show
@@ -23,6 +25,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :gender, :country);
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :gender, :country_code)
   end
 end

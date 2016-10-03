@@ -14,7 +14,13 @@ class CollectionsController < ApplicationController
   def create
     @collection = Collection.new(collection_params)
     @collection.user_id = current_user.id
+
     if @collection.save
+
+      params[:collection][:category_ids].each do |category_id|
+        CategoryCollection.create(:collection_id => @collection.id, :category_id => category_id) if !category_id.empty?
+      end
+
       redirect_to collections_path
     else
       flash.now[:danger] = @collection.errors.full_messages
@@ -30,7 +36,23 @@ class CollectionsController < ApplicationController
 
   def update
     if @collection.update(collection_params)
+      #
+      # category_collections = CategoryCollection.where(:collection_id => params[:id])
+      # category_ids = params[:collection][:category_ids].reject { |a| a.empty? }
+      # category_collections.zip(category_ids) do |category_collection, category_id|
+      #     category_collection.update(:category_id => category_id)
+      # end
+
+      # params[:collection][:category_ids].each do |category_id|
+      #   category_collections = CategoryCollection.where(:collection_id => params[:id])
+      #   category_collections.each do |category_collection|
+      #     category_collection.update(:category_id => category_id) if !category_id.empty?
+      #     logger.ap category_collection.collection_id.to_s + ' pinasok ang ' + category_id if !category_id.empty?
+      #   end
+      # end
+
       redirect_to collections_path
+
     else
       flash.now[:danger] = @collection.errors.full_messages
       render :new
@@ -44,7 +66,8 @@ class CollectionsController < ApplicationController
 
   private
   def collection_params
-    params.require(:collection).permit(:title, :url, :description)
+    params.require(:collection).permit(:title, :url, :description, :category_ids => [])
+    # params.require(:collection).permit(:title, :url, :description)
   end
 
   def prepare_collection

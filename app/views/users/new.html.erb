@@ -24,12 +24,20 @@
         </div>
         <div class="form-group">
           <%= f.label :gender %>
-          <%= f.select :gender, [['Male', 'male'], ['Female', 'female']], {}, :class => 'form-control' %>
+          <%= f.collection_select(:gender, Gender.all, :id, :name, {}, :class => 'form-control') %>
         </div>
+        <!-- <div class="form-group">
+          <%= f.label :gender %>
+          <%= f.select :gender, [['Male', 'male'], ['Female', 'female']], {}, :class => 'form-control' %>
+        </div> -->
         <div class="form-group">
           <%= f.label :country %>
-          <%= f.select :country, [['The Philippines', 'philippines'], ['Japan', 'japan']] ,{} ,:class => 'form-control' %>
+          <%= f.collection_select(:country_code, Country.all, :country_code, :name, {}, :class => 'form-control') %>
         </div>
+        <!-- <div class="form-group">
+          <%= f.label :country %>
+          <%= f.select :country, [['The Philippines', 'philippines'], ['Japan', 'japan']] ,{} ,:class => 'form-control' %>
+        </div> -->
         <div class="form-group">
           <%= f.submit 'Register', :class => 'btn btn-primary' %>
         </div>

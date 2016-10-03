@@ -18,6 +18,6 @@ class User < ApplicationRecord
   validates :gender,
             :presence => true
 
-  validates :country,
+  validates :country_code,
             :presence => true
 end

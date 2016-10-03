@@ -3,7 +3,12 @@
   <% @collections.each do |collection| %>
     <div class="col-lg-3 ">
       <div class="thumbnail">
-        <%= link_to image_tag(collection[:url], :size => '', :alt => 'Winterfell'), collection_path(collection[:id]) %>
+        <span class="tags">
+          <% collection.categories.each do |category| %>
+            <%= link_to category.name, {}, :class => 'label label-default' %>
+          <% end %>
+        </span>
+        <%= link_to image_tag(collection[:url], :size => '', :alt => 'Winterfell', :class => 'collection-image'), collection_path(collection[:id]) %>
         <div class="caption">
           <h4><%= collection[:title] %></h4>
           <p><%= collection[:description] %></p>
